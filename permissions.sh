@@ -35,6 +35,7 @@ DB_PORT=5432
 DB_DATABASE=laravel
 DB_USERNAME=laravel
 DB_PASSWORD=secret
+CACHE_DRIVER=database
 
 CACHE_DRIVER=file
 QUEUE_CONNECTION=sync
@@ -55,9 +56,14 @@ EOF
 fi'
 
 docker-compose exec app chmod 664 .env
+docker-compose exec app chown www-data:www-data .env
+sudo chown $(whoami):$(whoami) .env
+
+docker-compose exec app chmod 664 .env
 
 echo "🚀 Setting up Laravel..."
 docker-compose exec app php artisan key:generate --force
+docker-compose exec app php artisan migrate --force
 docker-compose exec app php artisan config:clear
 docker-compose exec app php artisan cache:clear
 docker-compose exec app php artisan view:clear
