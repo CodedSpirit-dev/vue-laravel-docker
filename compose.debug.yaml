@@ -1,0 +1,14 @@
+services:
+  vuelaraveldocker:
+    image: vuelaraveldocker
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 8000:8000
+      - 5173:5173
+      - 54321:54321
+      - 9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "index.js"]

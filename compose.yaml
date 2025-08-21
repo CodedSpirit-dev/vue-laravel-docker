@@ -1,0 +1,12 @@
+services:
+  vuelaraveldocker:
+    image: vuelaraveldocker
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 8000:8000
+      - 5173:5173
+      - 54321:54321
