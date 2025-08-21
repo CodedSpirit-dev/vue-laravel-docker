@@ -9,6 +9,7 @@ import { ZiggyVue } from 'ziggy-js';
 import { initializeTheme } from './composables/useAppearance';
 
 import PrimeVue from 'primevue/config';
+import 'primeicons/primeicons.css';
 import Lara from '@primeuix/themes/lara'; // tema soportado
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
@@ -71,7 +72,7 @@ createInertiaApp({
             .use(ZiggyVue)
             .use(PrimeVue, {
                 theme: {
-                    preset: Noir,
+                    preset: Lara,
                 }
             })
             .mount(el);
